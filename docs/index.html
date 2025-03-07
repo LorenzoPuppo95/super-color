@@ -43,106 +43,48 @@
 
 
     <section>
-        <article><p><a name="UColor"></a></p>
-<h2>UColor</h2>
-<p><strong>Kind</strong>: global class</p>
-<ul>
-<li><a href="#UColor">UColor</a>
-<ul>
-<li><a href="#new_UColor_new">new UColor(r, g, b, [a])</a></li>
-<li><em>instance</em>
-<ul>
-<li><a href="#UColor+toHEX">.toHEX()</a></li>
-<li><a href="#UColor+toRGBA">.toRGBA()</a></li>
-<li><a href="#UColor+getGrayScale">.getGrayScale()</a></li>
-<li><a href="#UColor+getContrastColor">.getContrastColor()</a></li>
-<li><a href="#UColor+getPalette">.getPalette()</a></li>
-</ul>
-</li>
-<li><em>static</em>
-<ul>
-<li><a href="#UColor.random">.random([a])</a></li>
-<li><a href="#UColor.fromHEX">.fromHEX(hexString)</a></li>
-<li><a href="#UColor.fromRGBA">.fromRGBA(rgbaString)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><a name="new_UColor_new"></a></p>
-<h3>new UColor(r, g, b, [a])</h3>
-<p>The constructor function initializes an object with red, green, blue, and alpha values.</p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>r</td>
-<td></td>
-<td>The <code>r</code> parameter represents the red component of a color in the RGB (Red, Green, Blue) color model. It specifies the intensity of the red color in the range of 0 to 255.</td>
-</tr>
-<tr>
-<td>g</td>
-<td></td>
-<td>The <code>g</code> parameter in the constructor function represents the green component of a color in RGB (Red, Green, Blue) color model. It specifies the intensity of the green color in the range of 0 to 255 (or 0 to 1 if using normalized values).</td>
-</tr>
-<tr>
-<td>b</td>
-<td></td>
-<td>The <code>b</code> parameter in the constructor function represents the blue component of a color in RGB (Red, Green, Blue) color model. It specifies the intensity of the blue color in the range of 0 to 255.</td>
-</tr>
-<tr>
-<td>[a]</td>
-<td><code>1</code></td>
-<td>The <code>a</code> parameter in the constructor function represents the alpha value, which is used to specify the opacity of a color. It ranges from 0 (completely transparent) to 1 (completely opaque). In the constructor, the default value for <code>a</code> is set to 1,</td>
-</tr>
-</tbody>
-</table>
-<p><a name="UColor+toHEX"></a></p>
-<h3>uColor.toHEX()</h3>
-<p>The <code>toHEX</code> function converts RGB and alpha values to a hexadecimal color code.</p>
-<p><strong>Kind</strong>: instance method of <a href="#UColor"><code>UColor</code></a><br>
-<strong>Returns</strong>: The toHEX() function is returning a hexadecimal representation of the color values
-stored in the object properties r, g, b, and a. If the alpha value (a) is equal to 1, it returns
-the hexadecimal representation of the RGB values. If the alpha value is not equal to 1, it
-calculates the alpha value in hexadecimal and appends it to the RGB values before returning<br>
-<a name="UColor+toRGBA"></a></p>
-<h3>uColor.toRGBA()</h3>
-<p>The <code>toRGBA()</code> function returns a string representing the RGBA values of a color.</p>
-<p><strong>Kind</strong>: instance method of <a href="#UColor"><code>UColor</code></a><br>
-<strong>Returns</strong>: The <code>toRGBA()</code> method is returning a string in the format <code>rgba(r, g, b, a)</code> where <code>r</code>,
-<code>g</code>, <code>b</code>, and <code>a</code> are the values of the red, green, blue, and alpha components respectively.<br>
-<a name="UColor+getGrayScale"></a></p>
-<h3>uColor.getGrayScale()</h3>
-<p>The <code>getGrayScale</code> function calculates the grayscale value of a color based on its RGB
-components.</p>
-<p><strong>Kind</strong>: instance method of <a href="#UColor"><code>UColor</code></a><br>
-<strong>Returns</strong>: A new UColor object with the grayscale values calculated from the RGB values of the
-current object, maintaining the alpha value.<br>
-<a name="UColor+getContrastColor"></a></p>
-<h3>uColor.getContrastColor()</h3>
-<p>The function <code>getContrastColor</code> calculates a contrasting color based on the input RGB color
+        <article><h2>Functions</h2>
+<dl>
+<dt><a href="#random">random([a])</a></dt>
+<dd><p>The function <code>random</code> generates a random color with optional alpha value.</p>
+</dd>
+<dt><a href="#fromHEX">fromHEX(hexString)</a></dt>
+<dd><p>The function <code>fromHEX</code> converts a hexadecimal color string to RGBA values.</p>
+</dd>
+<dt><a href="#fromRGBA">fromRGBA(rgbaString)</a></dt>
+<dd><p>The function <code>fromRGBA</code> parses an RGBA string to extract the red, green, blue, and alpha values,
+then creates a new <code>UColor</code> object with these values.</p>
+</dd>
+<dt><a href="#toHEX">toHEX()</a></dt>
+<dd><p>The function <code>toHEX()</code> converts RGB and alpha values to a hexadecimal color representation.</p>
+</dd>
+<dt><a href="#toRGBA">toRGBA()</a></dt>
+<dd><p>The <code>toRGBA()</code> function returns a string representing the RGBA values of a color.</p>
+</dd>
+<dt><a href="#getGrayScale">getGrayScale()</a></dt>
+<dd><p>The getGrayScale function calculates the grayscale value of a color based on its RGB components.</p>
+</dd>
+<dt><a href="#getContrastColor">getContrastColor()</a></dt>
+<dd><p>The function <code>getContrastColor</code> calculates a contrasting color based on the input RGB color
 array.</p>
-<p><strong>Kind</strong>: instance method of <a href="#UColor"><code>UColor</code></a><br>
-<strong>Returns</strong>: A new <code>UColor</code> object with the RGB values of the color that is the contrast of the
-original color.<br>
-<a name="UColor+getPalette"></a></p>
-<h3>uColor.getPalette()</h3>
-<p>The function <code>getPalette</code> generates a color palette based on the input colors by converting them
-to HSL, adjusting the hue, and converting back to RGB.</p>
-<p><strong>Kind</strong>: instance method of <a href="#UColor"><code>UColor</code></a><br>
-<strong>Returns</strong>: The <code>getPalette</code> function returns an array of colors. The first color in the array is
-based on the original colorsArray converted to HSL format, and the subsequent colors are
-generated by adjusting the hue value in steps of 120 degrees.<br>
-<a name="UColor.random"></a></p>
-<h3>UColor.random([a])</h3>
+</dd>
+<dt><a href="#getPalette">getPalette()</a></dt>
+<dd><p>The function <code>getPalette</code> generates a color palette based on the input colors by adjusting the
+hue values.</p>
+</dd>
+<dt><a href="#rgbToHsl">rgbToHsl(r, g, b)</a></dt>
+<dd><p>The function <code>rgbToHsl</code> converts RGB values to HSL (Hue, Saturation, Lightness) values in
+JavaScript.</p>
+</dd>
+<dt><a href="#hslToRgb">hslToRgb(h, s, l)</a></dt>
+<dd><p>The function <code>hslToRgb</code> converts HSL (Hue, Saturation, Lightness) color values to RGB (Red, Green,
+Blue) color values.</p>
+</dd>
+</dl>
+<p><a name="random"></a></p>
+<h2>random([a])</h2>
 <p>The function <code>random</code> generates a random color with optional alpha value.</p>
-<p><strong>Kind</strong>: static method of <a href="#UColor"><code>UColor</code></a><br>
+<p><strong>Kind</strong>: global function<br>
 <strong>Returns</strong>: A new <code>UColor</code> object is being returned with random values for red (r), green (g), blue
 (b), and alpha (a) components. The alpha component (a) is a random value between 0 and 1, while
 the red, green, and blue components (r, g, b) are random integers between 0 and 255.</p>
@@ -160,14 +102,14 @@ the red, green, and blue components (r, g, b) are random integers between 0 and 
 </tr>
 </tbody>
 </table>
-<p><a name="UColor.fromHEX"></a></p>
-<h3>UColor.fromHEX(hexString)</h3>
+<p><a name="fromHEX"></a></p>
+<h2>fromHEX(hexString)</h2>
 <p>The function <code>fromHEX</code> converts a hexadecimal color string to RGBA values.</p>
-<p><strong>Kind</strong>: static method of <a href="#UColor"><code>UColor</code></a><br>
-<strong>Returns</strong>: The <code>fromHEX</code> method is returning a new <code>UColor</code> object with the red, green, blue, and
-alpha values parsed from the input <code>hexString</code>. The red, green, and blue values are extracted
-from specific positions in the <code>hexString</code> and converted from hexadecimal to decimal using
-<code>parseInt</code>. The alpha value is set to 1 by default, but if the `hex</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: The <code>fromHEX</code> static method is returning a new <code>UColor</code> object with the red, green,
+blue, and alpha values extracted from the input <code>hexString</code>. The red, green, and blue values are
+extracted from the hexString by parsing substrings of the hexString, and the alpha value is
+calculated based on the length of the hexString.</p>
 <table>
 <thead>
 <tr>
@@ -182,11 +124,11 @@ from specific positions in the <code>hexString</code> and converted from hexadec
 </tr>
 </tbody>
 </table>
-<p><a name="UColor.fromRGBA"></a></p>
-<h3>UColor.fromRGBA(rgbaString)</h3>
+<p><a name="fromRGBA"></a></p>
+<h2>fromRGBA(rgbaString)</h2>
 <p>The function <code>fromRGBA</code> parses an RGBA string to extract the red, green, blue, and alpha values,
 then creates a new <code>UColor</code> object with these values.</p>
-<p><strong>Kind</strong>: static method of <a href="#UColor"><code>UColor</code></a><br>
+<p><strong>Kind</strong>: global function<br>
 <strong>Returns</strong>: An instance of the <code>UColor</code> class with the red, green, blue, and alpha values extracted
 from the input <code>rgbaString</code>.</p>
 <table>
@@ -199,7 +141,101 @@ from the input <code>rgbaString</code>.</p>
 <tbody>
 <tr>
 <td>rgbaString</td>
-<td>The <code>rgbaString</code> parameter is a string representing a color in RGBA format. It typically looks like <code>rgba(r, g, b, a)</code> where <code>r</code>, <code>g</code>, <code>b</code> are integers representing the red, green, and blue color channels respectively, and <code>a</code> is a</td>
+<td>The <code>rgbaString</code> parameter is a string representing a color in RGBA format. It typically looks like <code>rgba(r, g, b, a)</code> where <code>r</code>, <code>g</code>, <code>b</code> are integers representing the red, green, and blue color channels respectively, and <code>a</code> is alpha.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="toHEX"></a></p>
+<h2>toHEX()</h2>
+<p>The function <code>toHEX()</code> converts RGB and alpha values to a hexadecimal color representation.</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: The toHEX() function is returning a hexadecimal representation of the color values
+stored in the object. If the alpha value (a) is equal to 1, it returns the hexadecimal
+representation of the RGB values. If the alpha value is not 1, it also includes the alpha value
+in the hexadecimal representation.<br>
+<a name="toRGBA"></a></p>
+<h2>toRGBA()</h2>
+<p>The <code>toRGBA()</code> function returns a string representing the RGBA values of a color.</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: The <code>toRGBA()</code> method is returning a string in the format <code>rgba(r, g, b, a)</code> where <code>r</code>,
+<code>g</code>, <code>b</code>, and <code>a</code> are the values of the red, green, blue, and alpha components respectively.<br>
+<a name="getGrayScale"></a></p>
+<h2>getGrayScale()</h2>
+<p>The getGrayScale function calculates the grayscale value of a color based on its RGB components.</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: A new UColor object with the grayscale values for red, green, and blue channels, and
+the original alpha value.<br>
+<a name="getContrastColor"></a></p>
+<h2>getContrastColor()</h2>
+<p>The function <code>getContrastColor</code> calculates a contrasting color based on the input RGB color
+array.</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: A new <code>UColor</code> object with the RGB values of the color that is the contrast of the
+original color.<br>
+<a name="getPalette"></a></p>
+<h2>getPalette()</h2>
+<p>The function <code>getPalette</code> generates a color palette based on the input colors by adjusting the
+hue values.</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: The <code>getPalette</code> function returns an array of <code>UColor</code> objects. The array contains the
+original color from <code>this.colorsArray</code> converted to HSL and then back to RGB, as well as two
+additional colors with slightly adjusted hues.<br>
+<a name="rgbToHsl"></a></p>
+<h2>rgbToHsl(r, g, b)</h2>
+<p>The function <code>rgbToHsl</code> converts RGB values to HSL (Hue, Saturation, Lightness) values in
+JavaScript.</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: The function <code>rgbToHsl</code> is returning an array containing the HSL (Hue, Saturation,
+Lightness) values calculated from the input RGB values. The array contains three elements: the
+rounded H (Hue) value, the rounded S (Saturation) value, and the rounded L (Lightness) value.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>The <code>r</code>, <code>g</code>, and <code>b</code> parameters in the <code>rgbToHsl</code> function represent the red, green, and blue values of a color respectively. These values are typically in the range of 0 to 255, where 0 represents the absence of that color and</td>
+</tr>
+<tr>
+<td>g</td>
+<td>The <code>g</code> parameter in the <code>rgbToHsl</code> function represents the green component of an RGB color. In the RGB color model, colors are created by mixing different intensities of red, green, and blue light. The <code>g</code> parameter specifies the intensity of the green light in the</td>
+</tr>
+<tr>
+<td>b</td>
+<td>The <code>b</code> parameter in the <code>rgbToHsl</code> function represents the blue component of an RGB color. In the RGB color model, colors are created by mixing different intensities of red, green, and blue light. The <code>b</code> parameter is the intensity of the blue light in the</td>
+</tr>
+</tbody>
+</table>
+<p><a name="hslToRgb"></a></p>
+<h2>hslToRgb(h, s, l)</h2>
+<p>The function <code>hslToRgb</code> converts HSL (Hue, Saturation, Lightness) color values to RGB (Red, Green,
+Blue) color values.</p>
+<p><strong>Kind</strong>: global function<br>
+<strong>Returns</strong>: The function <code>hslToRgb</code> returns an array of three values representing the RGB values of a
+color converted from HSL (Hue, Saturation, Lightness) format.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h</td>
+<td>Hue value in the range of 0 to 360.</td>
+</tr>
+<tr>
+<td>s</td>
+<td>The <code>s</code> parameter in the <code>hslToRgb</code> function stands for the saturation value in the HSL (Hue, Saturation, Lightness) color model. It represents the intensity of the color. In the function, the <code>s</code> parameter is divided by 100 to normalize</td>
+</tr>
+<tr>
+<td>l</td>
+<td>The <code>l</code> parameter in the <code>hslToRgb</code> function represents the lightness value in the HSL (Hue, Saturation, Lightness) color model. It ranges from 0 to 100, where 0 is black and 100 is white.</td>
 </tr>
 </tbody>
 </table></article>
@@ -219,7 +255,7 @@ from the input <code>rgbaString</code>.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Mar 07 2025 18:56:38 GMT+0100 (Central European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Mar 07 2025 19:02:35 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

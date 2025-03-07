@@ -1,0 +1,31 @@
+{
+  "name": "super-color",
+  "version": "1.0.0",
+  "description": "library for color functionalities",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jsdoc": "^4.0.4",
+    "jsdoc-to-markdown": "^9.1.1"
+  },
+  "scripts": {
+    "docs": "jsdoc index.js -d ./docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LorenzoPuppo95/super-color.git"
+  },
+  "keywords": [
+    "color",
+    "generator",
+    "type",
+    "converter"
+  ],
+  "author": "@LorenzoPuppo95",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LorenzoPuppo95/super-color/issues"
+  },
+  "homepage": "https://github.com/LorenzoPuppo95/super-color#readme"
+}

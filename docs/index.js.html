@@ -1,5 +1,34 @@
-/* The `UColor` class in JavaScript provides methods for generating random colors, converting colors
-between different formats, calculating grayscale values, and creating contrasting color palettes. */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* The UColor class in JavaScript provides methods for creating, manipulating, and converting colors,
+including generating random colors, converting from HEX and RGBA formats, calculating grayscale, and
+finding contrast colors. */
 class UColor {
 
     /**
@@ -50,7 +79,7 @@ class UColor {
      */
     static fromRGBA(rgbaString) {
         const rgbContent = rgbaString.trim().slice(rgbaString.indexOf("(") + 1, -1);
-
+     
         const rgbParts = rgbContent.split(',');
         const r = Number(rgbParts[0]);
         const g = Number(rgbParts[1]);
@@ -108,7 +137,7 @@ class UColor {
      * `g`, `b`, and `a` are the values of the red, green, blue, and alpha components respectively.
      */
     toRGBA() {
-        return `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`;
+        return `rgba(${this.r}, ${this.g}, ${this.b}, ${this.a})`; 
     }
 
     /**
@@ -119,39 +148,33 @@ class UColor {
      */
     getGrayScale() {
         const gray = Math.round((this.r * 0.299) + (this.g * 0.587) + (this.b * 0.114));
-        return new UColor(gray, gray, gray, this.a);
+        return new UColor(gray, gray, gray, this.a); 
     }
 
     // getContrastColor() {
     //     const brightness = (this.r * 0.2126) + (this.g * 0.7152) + (this.b * 0.0722);
     //     const invertedBrightness = 255 - brightness;
-
+    
     //     const newR = Math.min(255, Math.max(0, this.r + (invertedBrightness - brightness)));
     //     const newG = Math.min(255, Math.max(0, this.g + (invertedBrightness - brightness)));
     //     const newB = Math.min(255, Math.max(0, this.b + (invertedBrightness - brightness)));
-
+    
     //     return new UColor(newR, newG, newB, this.a);
     // }
 
-    /**
-     * The function `getContrastColor` calculates a contrasting color based on the input RGB color
-     * array.
-     * @returns A new `UColor` object with the RGB values of the color that is the contrast of the
-     * original color.
-     */
     getContrastColor() {
         const hslVersion = rgbToHsl(...this.colorsArray);
         const hue = hslVersion[0];
         const newHue = (hue + 180) % 360;
         const l = hslVersion[2];
         let newLuminosity = l;
-        if (l < 20 || l > 80) {
-            newLuminosity = 100 - l;
+        if (l &lt; 20 || l > 80) {
+          newLuminosity = 100 - l;
         }
         const newHsl = [newHue, hslVersion[1], newLuminosity];
         const contrastedRGB = hslToRgb(...newHsl);
         return new UColor(...contrastedRGB);
-    }
+      }
 
     /**
      * The function `getPalette` generates a color palette based on the input colors by converting them
@@ -167,51 +190,57 @@ class UColor {
         const l = hslVersion[2];
         const Palette = [new UColor(this.colorsArray)];
         const movements = 120;
-
-        for (let i = 0; i < 2; i++) {
-            const newHue = (hue + (movements * (1 + i))) % 360;
-            const newHsl = [newHue, s, l];
-            const newColor = hslToRgb(...newHsl);
-            Palette.push(new UColor(...newColor));
-        }
+    
+        for (let i = 0; i &lt; 2; i++) {
+          const newHue = (hue + (movements * (1 + i))) % 360;
+          const newHsl = [newHue, s, l];
+          const newColor  = hslToRgb(...newHsl);
+          Palette.push(new UColor(...newColor));
+        }   
         return Palette;
-    }
+      }
 }
 
 
-function rgbToHsl(r, g, b) {
-    r /= 255;
-    g /= 255;
-    b /= 255;
-    const l = Math.max(r, g, b);
-    const s = l - Math.min(r, g, b);
-    const h = s
-        ? l === r
-            ? (g - b) / s
-            : l === g
-                ? 2 + (b - r) / s
-                : 4 + (r - g) / s
-        : 0;
-    return [
-        Math.round(60 * h < 0 ? 60 * h + 360 : 60 * h),
-        Math.round(
-            100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0)
-        ),
-        Math.round((100 * (2 * l - s)) / 2),
-    ]
-}
+// const ucolor1 = new UColor(12, 34, 27);
+// const ucolor2 = UColor.fromHEX('#ff340031');
+// const ucolor3 = UColor.random()
+// const ucolor4 = UColor.fromRGBA('rgba(255,161,12,0.5)')
+// const ucolor5 = UColor.fromRGBA('rgb(255,161,12)')
+// const ucolor6 = UColor.fromRGBA('rgb(255,161,12,0.8)')
 
 
-function hslToRgb(h, s, l) {
-    s /= 100;
-    l /= 100;
-    const k = (n) => (n + h / 30) % 12;
-    const a = s * Math.min(l, 1 - l);
-    const f = (n) =>
-        l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-    return [
-        Math.round(255 * f(0)),
-        Math.round(255 * f(8)),
-        Math.round(255 * f(4)),
-    ]
-}
+// console.log(ucolor2.toHEX())//'#ff3400'
+// console.log(ucolor2.toRGBA())//'rgba(255,52,0,1)'
+// console.log(ucolor2.getContrastColor())//UColor
+// // console.log(ucolor2.getPalette())//[UColor, UColor, UColor]
+// console.log(ucolor2.getGrayScale())//UColor
+
+// console.log(ucolor3);
+// console.log(ucolor1);
+// console.log(ucolor2);
+// console.log(ucolor4);
+// console.log(ucolor5);
+// console.log(ucolor6);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="UColor.html">UColor</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Mar 07 2025 17:53:02 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

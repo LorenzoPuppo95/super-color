@@ -1,6 +1,26 @@
 /* The `UColor` class in JavaScript provides methods for generating random colors, converting colors
 between different formats, calculating grayscale values, and creating contrasting color palettes. */
-class UColor {
+export default class UColor { 
+    /**
+     * The constructor function initializes an object with red, green, blue, and alpha values.
+     * @param r - The `r` parameter represents the red component of a color in the RGB (Red, Green,
+     * Blue) color model. It specifies the intensity of the red color in the range of 0 to 255.
+     * @param g - The `g` parameter in the constructor function represents the green component of a
+     * color in RGB (Red, Green, Blue) color model. It specifies the intensity of the green color in
+     * the range of 0 to 255 (or 0 to 1 if using normalized values).
+     * @param b - The `b` parameter in the constructor function represents the blue component of a
+     * color in RGB (Red, Green, Blue) color model. It specifies the intensity of the blue color in the
+     * range of 0 to 255.
+     * @param [a=1] - The `a` parameter in the constructor function represents the alpha value, which
+     * is used to specify the opacity of a color. It ranges from 0 (completely transparent) to 1
+     * (completely opaque). In the constructor, the default value for `a` is set to 1,
+     */
+    constructor(r, g, b, a = 1) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.a = a;
+    }
 
     /**
      * The function `random` generates a random color with optional alpha value.
@@ -63,27 +83,6 @@ class UColor {
     }
 
     /**
-     * The constructor function initializes an object with red, green, blue, and alpha values.
-     * @param r - The `r` parameter represents the red component of a color in the RGB (Red, Green,
-     * Blue) color model. It specifies the intensity of the red color in the range of 0 to 255.
-     * @param g - The `g` parameter in the constructor function represents the green component of a
-     * color in RGB (Red, Green, Blue) color model. It specifies the intensity of the green color in
-     * the range of 0 to 255 (or 0 to 1 if using normalized values).
-     * @param b - The `b` parameter in the constructor function represents the blue component of a
-     * color in RGB (Red, Green, Blue) color model. It specifies the intensity of the blue color in the
-     * range of 0 to 255.
-     * @param [a=1] - The `a` parameter in the constructor function represents the alpha value, which
-     * is used to specify the opacity of a color. It ranges from 0 (completely transparent) to 1
-     * (completely opaque). In the constructor, the default value for `a` is set to 1,
-     */
-    constructor(r, g, b, a = 1) {
-        this.r = r;
-        this.g = g;
-        this.b = b;
-        this.a = a;
-    }
-
-    /**
      * The `toHEX` function converts RGB and alpha values to a hexadecimal color code.
      * @returns The toHEX() function is returning a hexadecimal representation of the color values
      * stored in the object properties r, g, b, and a. If the alpha value (a) is equal to 1, it returns
@@ -121,17 +120,6 @@ class UColor {
         const gray = Math.round((this.r * 0.299) + (this.g * 0.587) + (this.b * 0.114));
         return new UColor(gray, gray, gray, this.a);
     }
-
-    // getContrastColor() {
-    //     const brightness = (this.r * 0.2126) + (this.g * 0.7152) + (this.b * 0.0722);
-    //     const invertedBrightness = 255 - brightness;
-
-    //     const newR = Math.min(255, Math.max(0, this.r + (invertedBrightness - brightness)));
-    //     const newG = Math.min(255, Math.max(0, this.g + (invertedBrightness - brightness)));
-    //     const newB = Math.min(255, Math.max(0, this.b + (invertedBrightness - brightness)));
-
-    //     return new UColor(newR, newG, newB, this.a);
-    // }
 
     /**
      * The function `getContrastColor` calculates a contrasting color based on the input RGB color

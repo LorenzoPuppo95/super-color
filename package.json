@@ -9,7 +9,7 @@
     "jsdoc-to-markdown": "^9.1.1"
   },
   "scripts": {
-    "docs": "jsdoc index.js -d ./docs",
+    "docs": "jsdoc --readme README.md -d ./docs index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

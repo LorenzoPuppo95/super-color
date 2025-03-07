@@ -4,16 +4,17 @@ export default class UColor {
     /**
      * The constructor function initializes an object with red, green, blue, and alpha values.
      * @param r - The `r` parameter represents the red component of a color in the RGB (Red, Green,
-     * Blue) color model. It specifies the intensity of the red color in the range of 0 to 255.
+     * Blue) color model. It typically ranges from 0 to 255, indicating the intensity of red in the
+     * color.
      * @param g - The `g` parameter in the constructor function represents the green component of a
      * color in RGB (Red, Green, Blue) color model. It specifies the intensity of the green color in
-     * the range of 0 to 255 (or 0 to 1 if using normalized values).
+     * the range of 0 to 255.
      * @param b - The `b` parameter in the constructor function represents the blue component of a
      * color in RGB (Red, Green, Blue) color model. It specifies the intensity of the blue color in the
      * range of 0 to 255.
      * @param [a=1] - The `a` parameter in the constructor function represents the alpha value, which
      * is used to specify the opacity of a color. It ranges from 0 (completely transparent) to 1
-     * (completely opaque). In the constructor, the default value for `a` is set to 1,
+     * (completely opaque). In the constructor, if the `a` parameter is not provided, it defaults to 1.
      */
     constructor(r, g, b, a = 1) {
         this.r = r;
@@ -43,10 +44,10 @@ export default class UColor {
      * The function `fromHEX` converts a hexadecimal color string to RGBA values.
      * @param hexString - The `hexString` parameter is a string representing a color in hexadecimal
      * format. It can be in the format `#RRGGBB` for RGB colors or `#RRGGBBAA` for RGBA colors, where:
-     * @returns The `fromHEX` method is returning a new `UColor` object with the red, green, blue, and
-     * alpha values parsed from the input `hexString`. The red, green, and blue values are extracted
-     * from specific positions in the `hexString` and converted from hexadecimal to decimal using
-     * `parseInt`. The alpha value is set to 1 by default, but if the `hex
+     * @returns The `fromHEX` static method is returning a new `UColor` object with the red, green,
+     * blue, and alpha values extracted from the input `hexString`. The red, green, and blue values are
+     * extracted from the hexString by parsing substrings of the hexString, and the alpha value is
+     * calculated based on the length of the hexString.
      */
     static fromHEX(hexString) {
         const r = parseInt(hexString.slice(1, 3), 16);
@@ -64,13 +65,12 @@ export default class UColor {
      * then creates a new `UColor` object with these values.
      * @param rgbaString - The `rgbaString` parameter is a string representing a color in RGBA format.
      * It typically looks like `rgba(r, g, b, a)` where `r`, `g`, `b` are integers representing the
-     * red, green, and blue color channels respectively, and `a` is a
+     * red, green, and blue color channels respectively, and `a` is alpha.
      * @returns An instance of the `UColor` class with the red, green, blue, and alpha values extracted
      * from the input `rgbaString`.
      */
     static fromRGBA(rgbaString) {
         const rgbContent = rgbaString.trim().slice(rgbaString.indexOf("(") + 1, -1);
-
         const rgbParts = rgbContent.split(',');
         const r = Number(rgbParts[0]);
         const g = Number(rgbParts[1]);
@@ -83,11 +83,11 @@ export default class UColor {
     }
 
     /**
-     * The `toHEX` function converts RGB and alpha values to a hexadecimal color code.
+     * The function `toHEX()` converts RGB and alpha values to a hexadecimal color representation.
      * @returns The toHEX() function is returning a hexadecimal representation of the color values
-     * stored in the object properties r, g, b, and a. If the alpha value (a) is equal to 1, it returns
-     * the hexadecimal representation of the RGB values. If the alpha value is not equal to 1, it
-     * calculates the alpha value in hexadecimal and appends it to the RGB values before returning
+     * stored in the object. If the alpha value (a) is equal to 1, it returns the hexadecimal
+     * representation of the RGB values. If the alpha value is not 1, it also includes the alpha value
+     * in the hexadecimal representation.
      */
     toHEX() {
         const decToHex = dec => dec.toString(16).padStart(2, '0');
@@ -111,10 +111,9 @@ export default class UColor {
     }
 
     /**
-     * The `getGrayScale` function calculates the grayscale value of a color based on its RGB
-     * components.
-     * @returns A new UColor object with the grayscale values calculated from the RGB values of the
-     * current object, maintaining the alpha value.
+     * The getGrayScale function calculates the grayscale value of a color based on its RGB components.
+     * @returns A new UColor object with the grayscale values for red, green, and blue channels, and
+     * the original alpha value.
      */
     getGrayScale() {
         const gray = Math.round((this.r * 0.299) + (this.g * 0.587) + (this.b * 0.114));
@@ -142,11 +141,11 @@ export default class UColor {
     }
 
     /**
-     * The function `getPalette` generates a color palette based on the input colors by converting them
-     * to HSL, adjusting the hue, and converting back to RGB.
-     * @returns The `getPalette` function returns an array of colors. The first color in the array is
-     * based on the original colorsArray converted to HSL format, and the subsequent colors are
-     * generated by adjusting the hue value in steps of 120 degrees.
+     * The function `getPalette` generates a color palette based on the input colors by adjusting the
+     * hue values.
+     * @returns The `getPalette` function returns an array of `UColor` objects. The array contains the
+     * original color from `this.colorsArray` converted to HSL and then back to RGB, as well as two
+     * additional colors with slightly adjusted hues.
      */
     getPalette() {
         const hslVersion = rgbToHsl(...this.colorsArray);
@@ -167,6 +166,22 @@ export default class UColor {
 }
 
 
+/**
+ * The function `rgbToHsl` converts RGB values to HSL (Hue, Saturation, Lightness) values in
+ * JavaScript.
+ * @param r - The `r`, `g`, and `b` parameters in the `rgbToHsl` function represent the red, green, and
+ * blue values of a color respectively. These values are typically in the range of 0 to 255, where 0
+ * represents the absence of that color and
+ * @param g - The `g` parameter in the `rgbToHsl` function represents the green component of an RGB
+ * color. In the RGB color model, colors are created by mixing different intensities of red, green, and
+ * blue light. The `g` parameter specifies the intensity of the green light in the
+ * @param b - The `b` parameter in the `rgbToHsl` function represents the blue component of an RGB
+ * color. In the RGB color model, colors are created by mixing different intensities of red, green, and
+ * blue light. The `b` parameter is the intensity of the blue light in the
+ * @returns The function `rgbToHsl` is returning an array containing the HSL (Hue, Saturation,
+ * Lightness) values calculated from the input RGB values. The array contains three elements: the
+ * rounded H (Hue) value, the rounded S (Saturation) value, and the rounded L (Lightness) value.
+ */
 function rgbToHsl(r, g, b) {
     r /= 255;
     g /= 255;
@@ -190,6 +205,19 @@ function rgbToHsl(r, g, b) {
 }
 
 
+/**
+ * The function `hslToRgb` converts HSL (Hue, Saturation, Lightness) color values to RGB (Red, Green,
+ * Blue) color values.
+ * @param h - Hue value in the range of 0 to 360.
+ * @param s - The `s` parameter in the `hslToRgb` function stands for the saturation value in the HSL
+ * (Hue, Saturation, Lightness) color model. It represents the intensity of the color. In the function,
+ * the `s` parameter is divided by 100 to normalize
+ * @param l - The `l` parameter in the `hslToRgb` function represents the lightness value in the HSL
+ * (Hue, Saturation, Lightness) color model. It ranges from 0 to 100, where 0 is black and 100 is
+ * white.
+ * @returns The function `hslToRgb` returns an array of three values representing the RGB values of a
+ * color converted from HSL (Hue, Saturation, Lightness) format.
+ */
 function hslToRgb(h, s, l) {
     s /= 100;
     l /= 100;

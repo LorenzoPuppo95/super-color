@@ -1,9 +1,8 @@
 {
-  "name": "super-color",
+  "name": "@lorenzopuppo95/super-color",
   "version": "1.0.0",
   "description": "library for color functionalities",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
     "jsdoc": "^4.0.4",
     "jsdoc-to-markdown": "^9.1.1"
@@ -27,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/LorenzoPuppo95/super-color/issues"
   },
-  "homepage": "https://github.com/LorenzoPuppo95/super-color#readme"
+  "homepage": "https://github.com/LorenzoPuppo95/super-color#readme",
+  "directories": {
+    "doc": "docs"
+  }
 }
